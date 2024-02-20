@@ -71,6 +71,12 @@ public class MemberServlet extends HttpServlet {
 
 			dao.addMember(vo);
 
+		} else if (command != null && command.equals("delMember")) {
+			System.out.println("삭제시 코드");
+			String id = request.getParameter("id");
+			System.out.println("삭제 id" + id);
+			dao.delMember(id);
+
 		}
 
 		List<MemberVO> list = dao.listMembers();
@@ -92,7 +98,8 @@ public class MemberServlet extends HttpServlet {
 			Date joinDate = list.get(i).getJoinDate();
 
 			pw.write("<tr><td>" + id + "</td><td>" + pwd + " </td><td>" + name + "</td><td>" + email + "</td><td>"
-					+ joinDate + "</td></tr>\r\n");
+					+ joinDate + "</td> + <td>" + "<a href='http://localhost:8090/pro07/member?command=delMember&id="
+					+ id + "'>삭제</a>" + "</td> + </tr>\r\n");
 
 		}
 

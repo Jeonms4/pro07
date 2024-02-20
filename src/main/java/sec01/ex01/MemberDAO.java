@@ -143,8 +143,8 @@ public class MemberDAO {
 		System.out.println("삭제하고자 하는 ID" + id);
 		try {
 			conn = dataFactory.getConnection();
-			String query="delete from t_member" + "where id = ?";
-			System.out.println("회원 삭제 sql문" + "\n" + query);
+			String query = "delete from t_member" + " where id=?";
+			System.out.println("prepareStatememt:" + query);
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, id);
